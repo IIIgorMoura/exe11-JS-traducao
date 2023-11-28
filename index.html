@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tradução - projeto semestral</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- barra opcoes traducao -->
+    <section id="barraTraducao">
+        <img onclick="Escolher('ptbr')" class="iconeTraducao" src="br-icone.jpg" alt="">
+
+        <img onclick="Escolher('en')" class="iconeTraducao" src="eua-icone.webp" alt="">
+
+        <img onclick="Escolher('rus')" class="iconeTraducao" src="rus-icone.png" alt="">
+    </section>
+
+    <!-- Inicio FAQ -->
+
+    <section class="section-bg2 section-padding-128" id="faq">
+        <div class="content flex-column-center">
+            <div>
+                <div data-aos="slide-up" data-aos-duration="1000" class="accent">
+                    <small id="paragrafo1">
+                        CONFIRA NOSSO FAQ
+                    </small>
+                </div>
+
+                <h2 data-aos="slide-up" data-aos-duration="1000" id="paragrafo2">Precisando de ajuda?<br>
+                </h2>
+
+
+            </div>
+
+            <div class="faq-all card-width">
+                <!-- PERGUNTA -->
+                <details>
+                    <summary data-aos="slide-up" data-aos-duration="1000" class="title-todos" id="pergunta1">Quais são as políticas de
+                        reembolso?
+                    </summary>
+                    <p class="faq-content" id="resposta1">
+                        É possível solicitar o reembolso até 3 meses após a assinatura de um curso garantindo assim, que
+                        o cliente
+                        tenha o tempo necessário para decidir se quer se aprofundar no tema.
+                    </p>
+                </details>
+
+                <!-- PERGUNTA -->
+                <details>
+                    <summary data-aos="slide-up" data-aos-duration="1000" class="title-todos" id="pergunta2">Os cursos tem mensalidades
+                        ou
+                        anuidades?</summary>
+                    <p class="faq-content" id="resposta2">
+                        Todos os nossos cursos possuem um sistema de assinatura anual para acessar os atuais e futuros
+                        módulos,
+                        tendo a possibilidade de parcelar em até 12X sem anuidades.
+                    </p>
+                </details>
+
+                <!-- PERGUNTA -->
+                <details>
+                    <summary data-aos="slide-up" data-aos-duration="1000" class="title-todos" id="pergunta3">Tenho que pagar por novos
+                        conteúdos?
+                    </summary>
+                    <p class="faq-content" id="resposta3">
+                        Ao assinar um de nossos cursos, você tem acesso imediato a todos os módulos já disponíveis e
+                        aqueles forem
+                        adicionados, apenas sendo necessário renovar a matrícula anualmente.
+                    </p>
+                </details>
+
+                <!-- PERGUNTA -->
+                <details>
+                    <summary data-aos="slide-up" data-aos-duration="2000" class="title-todos" id="pergunta4">Quando as aulas estão
+                        disponíveis?
+                    </summary>
+                    <p class="faq-content" id="resposta4">
+                        Você tem acesso imediato a todos os nossos conteúdos assim que assinar um de nossos cursos.
+                    </p>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function Escolher(idioma) {
+            fetch(`textos_${idioma}.json`)
+                .then(resposta => resposta.json())
+                .then(texto => {
+                    document.getElementById('paragrafo1').innerText = texto.paragrafo1;
+                    document.getElementById('paragrafo2').innerText = texto.paragrafo2;
+
+                    document.getElementById('pergunta1').innerText = texto.pergunta1;
+                    document.getElementById('resposta1').innerText = texto.resposta1;
+
+                    document.getElementById('pergunta2').innerText = texto.pergunta2;
+                    document.getElementById('resposta2').innerText = texto.resposta2;
+
+                    document.getElementById('pergunta3').innerText = texto.pergunta3;
+                    document.getElementById('resposta3').innerText = texto.resposta3;
+
+                    document.getElementById('pergunta4').innerText = texto.pergunta4;
+                    document.getElementById('resposta4').innerText = texto.resposta4;
+                })
+
+                .catch(error => console.error('Erro buscando textos:', error))
+        }
+    </script>
+</body>
+
+</html>
